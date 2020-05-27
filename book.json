@@ -1,0 +1,29 @@
+{
+	"title": "小郑keep learning",
+	"author": "JacobZheng",
+	"links": {
+    "sidebar": {
+      "俺的博客": "https://www.cnblogs.com/CodingJacob/"
+    }
+  },
+  "plugins": [
+    "-lunr",
+    "-search",
+		"search-pro",
+    "back-to-top-button",
+	 	"page-toc-button",
+		"expandable-chapters-small",
+		"code",
+		"insert-logo"
+  ],
+	"pluginsConfig": {
+    "page-toc-button": {
+      "maxTocDepth": 6,
+      "minTocSize": 2
+    },
+		"insert-logo": {
+      "url": "https://markdown-image-upload.oss-cn-beijing.aliyuncs.com/img/1511544071756_.pic.jpg",
+      "style": "background: none; max-height: 30px; min-height: 30px"
+    }
+  }
+}
