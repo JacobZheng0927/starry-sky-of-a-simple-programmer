@@ -451,6 +451,12 @@ Kubernetes 也包含大量的被称作 Controller 的高级抽象。控制器基
 
 ### Node管理
 
+获取目前node列表
+
+```
+kubectl get node
+```
+
 禁止pod调度到该节点上
 
 ```bash
@@ -461,6 +467,20 @@ kubectl cordon <node>
 
 ```bash
 kubectl drain <node>
+```
+
+### Pod管理
+
+查看所有的namespace下的容器(包括system的)
+
+```
+kubectl get po --all-namespace
+```
+
+查看6小时内的日志
+
+```
+kubectl logs --since 6h xxx
 ```
 
 

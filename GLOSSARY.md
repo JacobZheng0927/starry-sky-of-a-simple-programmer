@@ -31,3 +31,6 @@ Functions as a Service
 
 能够基于在线获取的镜像来创建和运行容器的程序。例如：Docker、CRI-O、containerd
 
+## 栈帧
+
+方法运行时的基础数据结构
