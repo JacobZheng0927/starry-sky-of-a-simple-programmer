@@ -27,4 +27,10 @@
 * [第四章：Linux](Chapter4 linux/README.md)
     * [第1节：Linux权限](Chapter4 linux/Linux权限.md)
     * [第2节：服务器运维经验](Chapter4 linux/从0开始鼓捣服务器.md)
+* [第五章：语言学习](Chapter5 LanguageLearning/README.md)
+    * [第一节：scala](Chapter5 LanguageLearning/scala.md)
+* [第六章：工具介绍](Chapter6 tools/README.md)
+    * [第一节：Typora](Chapter6 tools/typora.md)
+* [第七章：每日思考](Chapter7 thoughts/README.md)
+    * [202006](Chapter7 thoughts/202006/start.md)
 
