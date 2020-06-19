@@ -47,6 +47,8 @@
 
 
 
+## 2.对象在内存中
+
 ### **对象初始化过程**
 
 ![对象初始化](https://markdown-image-upload.oss-cn-beijing.aliyuncs.com/img/%E5%AF%B9%E8%B1%A1%E5%88%9D%E5%A7%8B%E5%8C%96.png)

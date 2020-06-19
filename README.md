@@ -22,6 +22,6 @@
 | 书名/文档名                                         | 阅读完成状态                                                 |
 | --------------------------------------------------- | ------------------------------------------------------------ |
 | 《Kubernetes-handbook》                             | 17%（<span class="badge color-label has-tooltip" style="background-color: #A295D6; color: #FFFFFF" title="" data-container="body" data-original-title="">挂起</span>） |
-| 《深入理解JAVA虚拟机：JVM高级特性与最佳实践》第二版 | 10%（<span class="badge color-label has-tooltip" style="background-color: #69D100; color: #FFFFFF" title="" data-container="body">进行中</span>） |
+| 《深入理解JAVA虚拟机：JVM高级特性与最佳实践》第二版 | 25%（<span class="badge color-label has-tooltip" style="background-color: #69D100; color: #FFFFFF" title="" data-container="body">进行中</span>） |
 | 《Spark权威指南》                                   | 3%（<span class="badge color-label has-tooltip" style="background-color: #A295D6; color: #FFFFFF" title="" data-container="body" data-original-title="">挂起</span>） |
 
