@@ -1,6 +1,6 @@
 # ClassLoader与类加载
 
-## 类基础
+## 1.类基础
 
 > java特性：跨平台，一次编译，到处运行
 >
@@ -22,13 +22,13 @@ cla--不同平台JVM解析-->command[机器指令]
 
 
 
-## 类加载
+## 2.类加载
 
 由上一节可知，JVM需要使用一个类，需要现有一个将.class文件加载到内存中的过程
 
 
 
-### 类加载的时机
+### 2.1 类加载的时机
 
 类从被加载到JVM中到卸载为止，生命周期分为以下7个阶段。
 
@@ -44,9 +44,126 @@ cla--不同平台JVM解析-->command[机器指令]
 > - 使用java.lang.reflect包的方法对类进行反射调用的时候，如果类没有初始化需要先触发其初始化。
 > - 当初始化一个类时，其父类没有初始化，先初始化其父类
 > - 虚拟机启动时，指定的执行的主类先初始化
-> - 
+> - java.lang.invoke.MethodHandle实例最后解析结果为`REF_getstatic`、`REF_putstatic`、`REF_invokestatic`的方法句柄，且这个方法句柄对应的类没有初始化过，需要先触发初始化。
 
-ClassLoader翻译过来就是类加载器，普通的java开发者其实用到的不多，但对于某些框架开发者来说却非常常见。理解ClassLoader的加载机制，也有利于我们编写出更高效的代码。ClassLoader的具体作用就是将class文件加载到jvm虚拟机中去，程序就可以正确运行了。但是，jvm启动的时候，并不会一次性加载所有的class文件，而是根据需要去动态加载。想想也是的，一次性加载那么多jar包那么多class，那内存不崩溃。本文的目的也是学习ClassLoader这种加载机制。。
+以上5种情况称为主动引用，其他的引用类的方式都是被动引用，不会触发初始化。
+
+```java
+/**
+ * 被动使用类字段演示一：
+* 通过子类引用父类的静态字段，不会导致子类初始化
+ **/
+public class SuperClass {
+	static {
+		System.out.println("SuperClass init!");
+	}
+	public static int value = 123;
+}
+
+public class SubClass extends SuperClass {
+	static {
+		System.out.println("SubClass init!");
+	}
+}
+
+/**
+ * 非主动使用类字段演示
+ * 输出SuperClass init! 子类没有初始化
+ **/
+public class NotInitialization {
+	public static void main(String[] args) {
+		System.out.println(SubClass.value);
+	}
+}
+
+/**
+ * 被动使用类字段演示二：
+* 通过数组定义来引用类，不会触发此类的初始化
+ **/
+public class NotInitialization {
+	public static void main(String[] args) {
+		SuperClass[] sca = new SuperClass[10];
+	}
+}
+```
+
+
+
+```java
+/**
+ * 被动使用类字段演示三：
+ * 被final修饰
+ * 常量在编译阶段会存入调用类的常量池中，本质上没有直接引用到定义常量的类，因此不会触发定义常量的类的初始化。
+ **/
+public class ConstClass {
+	static {
+		System.out.println("ConstClass init!");
+	}
+	public static final String HELLOWORLD = "hello world";
+}
+
+/**
+ * 非主动使用类字段演示
+ **/
+public class NotInitialization {
+	public static void main(String[] args) {
+		System.out.println(ConstClass.HELLOWORLD);
+	}
+}
+```
+
+
+
+### 2.2 类加载的过程
+
+> 即加载、验证、准备、解析、初始化这5个阶段
+
+- 加载
+
+  加载需要完成三件事：
+
+  1. 通过类的全限定名获取定义类的二进制字节流
+
+     可以从各种来源读取，例如zip包，网络，运行时计算生成（动态代理）...
+
+  2. 将字节流所代表的的静态存储结构转化为方法区运行时数据结构
+
+  3. 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区该类的各种数据访问入口
+
+
+
+- 验证
+
+  1. 文件格式验证（字节流是否符合Class文件格式规范）
+  2. 元数据验证（元数据语义验证）
+  3. 字节码验证（校验类在运行时不会危害虚拟机）
+  4. 符号引用验证（对类以外的信息进行匹配性校验）
+
+  
+
+- 准备
+
+  为类分配内存并设置变量初始值
+
+  
+
+- 解析
+
+  将符号引用替换为直接引用，确定引用目标
+
+  
+
+- 初始化
+
+  开始执行类中定义的Java代码程序
+
+
+
+### 2.3 类加载器
+
+#### 类与类加载器
+
+> 对于任意一个类，都需要
 
 ## ClassLoader结构
 
